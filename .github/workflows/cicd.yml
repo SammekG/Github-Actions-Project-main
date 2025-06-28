@@ -46,6 +46,7 @@ jobs:
 
   Test:
      runs-on: self-hosted
+     needs: security_check
  
      steps:
      - uses: actions/checkout@v4
