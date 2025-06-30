@@ -16,6 +16,9 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+    - name: Instal Maven
+      run: sudo apt install maven -y
+      
     - name: Build with Maven
       run: mvn compile
 
@@ -32,7 +35,6 @@ jobs:
         echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
         sudo apt-get update -y
         sudo apt-get install -y trivy
-        sudo apt install maven -y
 
     - name: Trivy FS Scan
       run: trivy fs --format table -o fs-report.json .
